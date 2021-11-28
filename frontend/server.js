@@ -1,10 +1,11 @@
+//Install express server
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/fron'));
+app.use(express.static(__dirname + '/dist/frontend'));
 app.use(cors());
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
