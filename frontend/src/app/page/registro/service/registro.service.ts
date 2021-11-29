@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RegistroTO } from '../../interfaces/registroto.interface';
+import { RegistroTO } from 'src/app/interfaces/registroto.interface';
 
 
 @Injectable({
