@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
-import { ParametrosTO } from '../../../interfaces/parametrosto.interface';
+import { ParametrosTO } from '../../interfaces/parametrosto.interface';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import { ParametrosTO } from '../../../interfaces/parametrosto.interface';
 })
 export class ParametrosService {
 
-  url: string = "https://frontsmartparking.herokuapp.com/api/parametros"
+  url: string = "https://smartparkingbackangelica.herokuapp.com/api/parametros"
 
   constructor(private _http: HttpClient) { }
   listarParametros(): Observable<ParametrosTO[]> {

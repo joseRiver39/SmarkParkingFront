@@ -1,5 +1,4 @@
-export interface IRegistroTO{
-  _id : String;
+export interface IRegistroSalidaTO{
   placa_vehiculo: String;
   plaza: String;
   hora_ingreso: String;
@@ -9,8 +8,7 @@ export interface IRegistroTO{
   total_pagar: String;
 }
 
-export class RegistroTO implements IRegistroTO {
-  _id = ""
+export class RegistroSalidaTO implements IRegistroSalidaTO {
   placa_vehiculo = "";
   plaza = "";
   hora_ingreso = "";

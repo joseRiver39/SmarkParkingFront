@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
-import { PlazasTO } from '../../../interfaces/plazasto.interface';
+import { PlazasTO } from '../../interfaces/plazasto.interface';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import { PlazasTO } from '../../../interfaces/plazasto.interface';
 })
 export class PlazasService {
 
-  url:string = "https://frontsmartparking.herokuapp.com/api/plazas";
+  url:string = "https://smartparkingbackangelica.herokuapp.com/api/plazas";
 
   constructor(private _http: HttpClient) { }
 

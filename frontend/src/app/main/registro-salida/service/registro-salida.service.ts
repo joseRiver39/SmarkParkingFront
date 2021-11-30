@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RegistroSalidaTO } from '../../../interfaces/registroSalidato.interface';
+import { RegistroSalidaTO } from '../../interfaces/registroSalidato.interface';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import { RegistroSalidaTO } from '../../../interfaces/registroSalidato.interface
 })
 export class RegistroSalidaService {
 
-  url:string = "https://frontsmartparking.herokuapp.com/api/registroSalida";
+  url:string = "http://127.0.0.1:1400/api/registroSalida";
 
   constructor(private _http: HttpClient) { }
 
