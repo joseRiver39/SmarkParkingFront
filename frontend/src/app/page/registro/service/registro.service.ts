@@ -9,7 +9,7 @@ import { RegistroTO } from '../../../interfaces/registroto.interface';
 })
 export class RegistroService {
 
-  url:string = "https://frontsmartparking.herokuapp.com/api/registro";
+  url:string = "https://smartparkingbackangelica.herokuapp.com/api/registro";
 
   constructor(private _http: HttpClient) { }
 

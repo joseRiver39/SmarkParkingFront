@@ -30,7 +30,7 @@ export class RegistroComponent implements OnInit {
   Guardar(){
 
     if (this.registro._id == "") {
-
+      this.asignarFecha();  
       this._registroService.guardar(this.registro).subscribe(
         data => {
           this.listarRegistro();
@@ -38,6 +38,7 @@ export class RegistroComponent implements OnInit {
         }
       )
     } else {
+      this.asignarFecha();
       this.Actualizar();
     }
 
@@ -71,5 +72,18 @@ export class RegistroComponent implements OnInit {
 
   LimpiarFormulario(){
     this.registro = new RegistroTO();
+  }
+  asignarFecha(){
+    var fecha = new Date();
+    var dia = fecha.getUTCDate();
+    var mes = fecha.getUTCMonth();
+    var anio = fecha.getUTCFullYear();
+    var hora = fecha.getHours();
+    var minutos = fecha.getMinutes();
+    if(this.registro.hora_ingreso == " "){
+      this.registro.hora_ingreso = anio+"/"+mes+"/"+dia+" "+hora +":"+minutos;
+    }else{
+      this.registro.hora_salida = anio+"/"+mes+"/"+dia+" "+hora +":"+minutos;
+    }
   }
 }
