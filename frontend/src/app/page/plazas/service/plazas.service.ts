@@ -9,7 +9,7 @@ import { PlazasTO } from '../../../interfaces/plazasto.interface';
 })
 export class PlazasService {
 
-  url:string = "https://frontsmartparking.herokuapp.com/api/plazas";
+  url:string = "https://backsmartparking.herokuapp.com/api/plazas";
 
   constructor(private _http: HttpClient) { }
 

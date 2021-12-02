@@ -9,7 +9,7 @@ import { ParametrosTO } from '../../../interfaces/parametrosto.interface';
 })
 export class ParametrosService {
 
-  url: string = "https://frontsmartparking.herokuapp.com/api/parametros"
+  url: string = "https://backsmartparking.herokuapp.com/api/parametros"
 
   constructor(private _http: HttpClient) { }
   listarParametros(): Observable<ParametrosTO[]> {

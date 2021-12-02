@@ -9,7 +9,7 @@ import { RegistroSalidaTO } from '../../../interfaces/registroSalidato.interface
 })
 export class RegistroSalidaService {
 
-  url:string = "https://frontsmartparking.herokuapp.com/api/registroSalida";
+  url:string = "https://backsmartparking.herokuapp.com/api/registroSalida";
 
   constructor(private _http: HttpClient) { }
 
