@@ -1,6 +1,9 @@
+import { ParametrosTO } from './../../interfaces/parametrosto.interface';
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from './service/registro.service';
 import { RegistroTO } from '../../interfaces/registroto.interface';
+import { ParametrosService } from '../parametros/service/parametros.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -30,26 +33,25 @@ export class RegistroComponent implements OnInit {
   Guardar(){
 
     if (this.registro._id == "") {
-      this.asignarFecha();  
+      this.AsignarFecha();
       this._registroService.guardar(this.registro).subscribe(
         data => {
           this.listarRegistro();
-          this.LimpiarFormulario();
         }
       )
-    } else {
-      this.asignarFecha();
-      this.Actualizar();
     }
-
+      else {
+       this.Actualizar();
+     }
+    this.LimpiarFormulario();
   }
 
   Actualizar(){
-
+    this.AsignarFecha();
+    this.TotalPagar();
     this._registroService.actualizar(this.registro).subscribe(
       data => {
-        this.listarRegistro();
-        this.LimpiarFormulario();
+         this.listarRegistro();
       }
     )
 
@@ -73,17 +75,38 @@ export class RegistroComponent implements OnInit {
   LimpiarFormulario(){
     this.registro = new RegistroTO();
   }
-  asignarFecha(){
+
+  AsignarFecha(){
     var fecha = new Date();
-    var dia = fecha.getUTCDate();
-    var mes = fecha.getUTCMonth();
-    var anio = fecha.getUTCFullYear();
+    var dia = fecha.getDate();
+    var mes = fecha.getMonth()+1;
+    var anio = fecha.getFullYear();
     var hora = fecha.getHours();
     var minutos = fecha.getMinutes();
-    if(this.registro.hora_ingreso == " "){
-      this.registro.hora_ingreso = anio+"/"+mes+"/"+dia+" "+hora +":"+minutos;
-    }else{
-      this.registro.hora_salida = anio+"/"+mes+"/"+dia+" "+hora +":"+minutos;
+    if (this.registro.hora_ingreso==""){
+      this.registro.hora_ingreso = String(anio+"-"+mes+"-"+dia+" "+hora+":"+minutos);
+    } else {
+      this.registro.hora_salida = String(anio+"-"+mes+"-"+dia+" "+hora+":"+minutos);
     }
+  }
+
+  TotalPagar(){
+    var tarifamoto = 50;
+    var tarifacarro = 70;
+    var valorPagar = 0;
+    var tiempoParqueo = (Date.parse(this.registro.hora_salida) - Date.parse(this.registro.hora_ingreso))/60000;
+    alert ("hola "+ (this.registro.hora_salida));
+    alert ("hola "+ (this.registro.hora_ingreso));
+
+    if (this.registro.tipo_vehiculo =="Carro"){
+
+     valorPagar = (tiempoParqueo*tarifacarro)
+     this.registro.total_pagar = valorPagar.toString()
+    } else  {
+      valorPagar = (tiempoParqueo*tarifamoto)
+     this.registro.total_pagar = valorPagar.toString()
+    }
+     alert ("Su vehiculo"+ this.registro.placa_vehiculo + "permaneció parqueado por: "+ tiempoParqueo + "y su valor a pagar es de: " + valorPagar);
+
   }
 }

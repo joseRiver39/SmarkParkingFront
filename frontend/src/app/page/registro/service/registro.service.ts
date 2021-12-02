@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { RegistroTO } from '../../../interfaces/registroto.interface';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class RegistroService {
 
-  url:string = "https://smartparkingbackangelica.herokuapp.com/api/registro";
+  url:string = "https://frontsmartparking.herokuapp.com/api/registro";
 
   constructor(private _http: HttpClient) { }
 
